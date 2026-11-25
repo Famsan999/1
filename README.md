@@ -1,23 +1,35 @@
-python
-```python
-import random
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-number = random.randint(1, 100)
-attempts = 0
+int main() {
+    int number, guess;
+    int attempts = 0;
 
-print("🎮 เกมทายตัวเลข!")
-print("ฉันสุ่มเลขไว้ระหว่าง 1-100")
+    srand(time(NULL));
+    number = rand() % 100 + 1;
 
-while True:
-    guess = int(input("ทายตัวเลข: "))
-    attempts += 1
+    printf("===== NUMBER GUESSING GAME =====\n");
+    printf("ทายตัวเลขระหว่าง 1 - 100\n");
 
-    if guess < number:
-        print("⬆️ มากกว่านี้!")
-    elif guess > number:
-        print("⬇️ น้อยกว่านี้!")
-    else:
-        print("🎉 ถูกต้องแล้ว!")
-        print(f"คุณใช้ความพยายาม {attempts} ครั้ง")
-        break
-```
+    while (1) {
+        printf("\nกรอกตัวเลข: ");
+        scanf("%d", &guess);
+
+        attempts++;
+
+        if (guess < number) {
+            printf("มากกว่านี้!\n");
+        }
+        else if (guess > number) {
+            printf("น้อยกว่านี้!\n");
+        }
+        else {
+            printf("\nยินดีด้วย! คุณทายถูกแล้ว 🎉\n");
+            printf("จำนวนครั้งที่ทาย: %d\n", attempts);
+            break;
+        }
+    }
+
+    return 0;
+}
